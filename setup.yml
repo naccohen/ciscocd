@@ -1,0 +1,15 @@
+- hosts: localhost
+  tasks:
+  - name: install git
+    become: yes
+    become_method: sudo
+    yum: name=git state=latest
+  - name: clone my spring-petclinic to local home directory
+    git:
+     repo: https://github.com/naccohen/spring-petclinic.git
+     dest: ~/petclinic
+  - name: clone my ciscocd project to local home directory
+    git:
+     repo: https://github.com/naccohen/ciscocd.git
+     dest: ~/ciscocd
+
