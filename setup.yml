@@ -12,4 +12,5 @@
     git:
      repo: https://github.com/naccohen/ciscocd.git
      dest: ~/ciscocd
+     update: no
 
