@@ -13,4 +13,30 @@
      repo: https://github.com/naccohen/ciscocd.git
      dest: ~/ciscocd
      update: no
-
+ # - name: download maven
+ #   become: yes
+ #   become_method: sudo
+ #   get_url:
+ #    url: http://www-us.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
+ #    dest: ~/
+ #    force: no
+ # - unarchive:
+ #    src: ~/apache-maven-3.3.9-bin.tar.gz
+ #    dest: ~/
+  - name: install docker
+    become: yes
+    become_method: sudo
+    yum: name=docker state=latest
+  - name: add group docker to user ec2-user
+    become: yes
+    become_method: sudo
+    user: 
+     name: ec2-user
+     groups: docker
+     append: yes
+  - name: start docker service
+    become: yes
+    become_method: sudo
+    service: 
+     name: docker
+     state: started 
